@@ -1,0 +1,45 @@
+﻿@model Product
+
+<form id="detail" action="/Customer/Add" method="post">
+    <div class="column">
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="id">Product's id</label>
+                <input type="text" name="id" id="id" autocomplete="on" required value="@Model.Id">
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="name">Product's name</label>
+                <input type="text" name="name" id="name" autocomplete="on" required value="@Model.Name">
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="price">Product's price</label>
+                <input type="text" name="price" id="price" autocomplete="on" required value="@Model.Price">
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="tax">Product's tax</label>
+                <input type="text" name="tax" id="tax" autocomplete="on" required value="@Model.Tax">
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="unit">Product's unit</label>
+                <input type="text" name="unit" id="unit" autocomplete="on" disable required value="Pack (A pack contains 12 products)">
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="name">Quantity</label>
+                <input type="number" id="quantity" name="quantity" required min="1" value="1" max="@Model.Quantity_Real">
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <button type="submit" class="btn btn-success" id="submit">Add to cart</button>
+        </div>
+    </div>
+</form>

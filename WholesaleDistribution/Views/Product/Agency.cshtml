@@ -1,0 +1,41 @@
+﻿<form id="detail" action="/Product/Agency" method="post">
+    <div class="column">
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="name">Agency's name</label>
+                <input type="text" name="name" id="name" autocomplete="on" required>
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="email">Agency's email</label>
+                <input type="text" name="email" id="email" autocomplete="on" required>
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="phone">Agency's phone</label>
+                <input type="text" name="phone" id="phone" autocomplete="on" required>
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="address">Agency's address</label>
+                <input type="text" name="address" id="address" autocomplete="on" required>
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="payment">Payment method</label>
+                <select class="custom-select" name="payment" id="payment">
+                    <option value="Cash on delivery" selected>Cash on delivery</option>
+                    <option value="Momo">Momo</option>
+                    <option value="Bank">Bank</option>
+                </select>
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <button type="submit" class="btn btn-success" id="submit">Confirm profile</button>
+        </div>
+    </div>
+</form>

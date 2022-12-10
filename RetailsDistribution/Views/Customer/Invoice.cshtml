@@ -1,0 +1,44 @@
+﻿@model PaginatedList<Invoice>
+
+<table style="width:100%" id="myTable">
+    <tr>
+        <th>CODE</th>
+        <th>CREATED IN</th>
+        <th>CHECKED IN</th>
+        <th>PRICE</th>
+        <th>PAYMENT</th>
+        <th>STATUS</th>
+        <th>PAID</th>
+        <th>PROCESSED BY</th>
+    </tr>
+    @foreach (var invoice in Model)
+    {
+        <tr>
+            <td>@invoice.Id</td>
+            <td>@invoice.Exported_Date</td>
+            <td>@invoice.Checked_Date</td>
+            <td>@invoice.Price</td>
+            <td>@invoice.Payment</td>
+            <td>@invoice.Status</td>
+            <td>@invoice.Paid</td>
+            <td>@invoice.Accountant_Id</td>
+        </tr>
+    }
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+}
+
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-2">
+        <a href="/Customer/Index/@(Model.PageIndex - 1)" class="btn btn-default @prevDisabled">PREVIOUS</a>
+    </div>
+    <div class="col-lg-2">
+        <a href="/Customer/Index/@(Model.PageIndex + 1)" class="btn btn-default @nextDisabled">NEXT</a>
+    </div>
+    <div class="col-lg-4"></div>
+</div>

@@ -1,0 +1,31 @@
+﻿<form id="detail" action="/Customer/SignIn" method="post">
+    <div class="column">
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="email">Enter your email</label>
+                <input type="text" name="email" id="email" autocomplete="on" placeholder="Please enter your email" required>
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <fieldset>
+                <label for="password">Enter your password</label>
+                <input type="password" name="password" id="password" autocomplete="on" placeholder="Please enter your password" required>
+            </fieldset>
+        </div>
+        <div class="col-lg-8" style="width: 100%; position: center; margin: 5px; padding: 5px;">
+            <div class="col-lg-8">
+                <fieldset>
+                    <a href="/Customer/SignUp">Sign up</a>
+                </fieldset>
+            </div>
+            <div class="col-lg-8">
+                <fieldset>
+                    <a href="/Customer/Forget">Forget your password?</a>
+                </fieldset>
+            </div>
+            <div class="col-lg-8">
+                <button type="submit" class="btn btn-success" id="submit">Sign in</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,95 @@
+﻿@model PaginatedList<Product>
+
+@{
+    var carts = ViewBag.Cart;
+    var customer = ViewBag.Customer;
+}
+
+<table style="width:100%" id="myTable">
+    <tr>
+        <th>CODE</th>
+        <th>NAME</th>
+        <th>PRICE</th>
+        <th>TAX</th>
+        <th>UNIT</th>
+        <th>MANUFACTURER' COMPANY</th>
+        <th>CATEGORY</th>
+        <th>CONSIGNMENT'S CODE</th>
+        <th>Quantity</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Name</td>
+            <td>@product.Price</td>
+            <td>@product.Tax</td>
+            <td>@product.Unit</td>
+            <td>@product.Manufacturer_Id</td>
+            <td>@product.Category_Id</td>
+            <td>@product.Consignment_Id</td>
+            @foreach (var cart in carts)
+            {
+                if (@product.Id == @cart.Product_Id)
+                {
+                    <td>@cart.Quantity</td>
+                }
+            }
+            <td><a href="/Customer/Detail/@product.Id" class="btn btn-default">Edit</a></td>
+            <td><a href="/Customer/Remove/@product.Id" class="btn btn-default">Remove</a></td>
+        </tr>
+    }
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+}
+
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-2">
+        <a href="/Customer/Index/@(Model.PageIndex - 1)" class="btn btn-default @prevDisabled">PREVIOUS</a>
+    </div>
+    <div class="col-lg-2">
+        <a href="/Customer/Index/@(Model.PageIndex + 1)" class="btn btn-default @nextDisabled">NEXT</a>
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+
+@if (Model.Count != 0)
+{   
+    if(customer != null) {
+        <div class="row">
+            <div class="col-lg-9"></div>
+            <form id="payment" action="/Customer/Invoice" method="post">
+                <div class="col-lg-8">
+                    <fieldset>
+                        <label for="payment">Payment</label>
+                        <select class="custom-select" name="payment" id="payment">
+                            <option value="Cash on delivery" selected>Cash on delivery</option>
+                            <option value="Momo">Momo</option>
+                            <option value="Bank">Bank</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="col-lg-8">
+                    <button type="submit" class="btn btn-success" id="submit">Place order</button>
+                </div>
+            </form>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-lg-9"></div>
+            <div class="col-lg-3">
+                <a href="/Customer/SignIn" class="btn btn-success">Place order</a>
+            </div>
+        </div>
+
+    }
+}
